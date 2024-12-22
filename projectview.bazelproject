@@ -1,0 +1,12 @@
+derive_targets_from_directories: true
+
+directories:
+    .
+    sources/libraries/spring-core
+    sources/libraries/spring-mvc-standard
+
+java_language_level: 21
+
+test_sources:
+    sources/libraries/spring-core/src/test/*
+    sources/libraries/spring-mvc-standard/src/test/*

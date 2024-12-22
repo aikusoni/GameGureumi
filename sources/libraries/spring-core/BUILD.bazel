@@ -1,0 +1,82 @@
+load("@rules_java//java:defs.bzl", "java_library", "java_plugin")
+load("@rules_jvm_external//:defs.bzl", "artifact")
+load("@contrib_rules_jvm//java:defs.bzl", "JUNIT5_DEPS", "java_test_suite")
+
+java_plugin(
+    name = "lombok_plugin",
+    generates_api = True,
+    processor_class = "lombok.launch.AnnotationProcessorHider$AnnotationProcessor",
+    deps = [artifact("org.projectlombok:lombok")],
+)
+
+java_library(
+    name = "gg-spring-core",
+    srcs = glob(["src/main/java/**/*.java"]),
+    resources = glob(["src/main/resources/**/*"]),
+    javacopts = [
+    ],
+    plugins = [
+        ":lombok_plugin",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        artifact("org.projectlombok:lombok"),
+        artifact("org.springframework.boot:spring-boot"),
+        artifact("org.springframework.boot:spring-boot-starter"),
+        artifact("org.springframework:spring-context"),
+        artifact("org.springframework:spring-core"),
+    ],
+)
+#
+# java_test_suite(
+#     name = "gg-spring-core-test",
+#     size = "small",
+#     srcs = glob(["src/test/java/**/*.java"]),
+#     runner = "junit5",
+#     test_suffixes = ["Tests.java"],
+#     runtime_deps = JUNIT5_DEPS,
+#     deps = [
+#         ":gg-spring-core",
+#         artifact("org.junit.jupiter:junit-jupiter-api"),
+#         artifact("org.junit.jupiter:junit-jupiter-params"),
+#         artifact("org.projectlombok:lombok"),
+#         artifact("org.springframework.boot:spring-boot"),
+#         artifact("org.springframework.boot:spring-boot-starter"),
+#         artifact("org.springframework.boot:spring-boot-starter-test"),
+#         artifact("org.springframework.boot:spring-boot-test"),
+#         artifact("org.springframework:spring-beans"),
+#         artifact("org.springframework:spring-context"),
+#         artifact("org.springframework:spring-core"),
+#     ],
+# )
+
+java_test(
+    name = "gg-spring-core-test",
+    srcs = glob(["src/test/java/**/*.java"]),
+    use_testrunner = False,
+    main_class = "org.junit.platform.console.ConsoleLauncher",
+    args = ["--select-package", "io.github.aikusoni.gamegureumi"],
+    deps = [
+        ":gg-spring-core",
+        artifact("org.junit.jupiter:junit-jupiter-api"),
+        artifact("org.junit.jupiter:junit-jupiter-engine"),
+        artifact("org.junit.jupiter:junit-jupiter-params"),
+        artifact("org.junit.platform:junit-platform-suite-api"),
+        artifact("org.projectlombok:lombok"),
+        artifact("org.springframework.boot:spring-boot"),
+        artifact("org.springframework.boot:spring-boot-starter"),
+        artifact("org.springframework.boot:spring-boot-starter-test"),
+        artifact("org.springframework.boot:spring-boot-test"),
+        artifact("org.springframework:spring-beans"),
+        artifact("org.springframework:spring-context"),
+        artifact("org.springframework:spring-core"),
+    ],
+    runtime_deps = [
+        artifact("org.junit.platform:junit-platform-commons"),
+        artifact("org.junit.platform:junit-platform-console"),
+        artifact("org.junit.platform:junit-platform-engine"),
+        artifact("org.junit.platform:junit-platform-launcher"),
+        artifact("org.junit.platform:junit-platform-suite-api"),
+
+    ],
+)

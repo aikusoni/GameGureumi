@@ -22,7 +22,7 @@
 ```
 아이템 예약 관련 변경
 [fix/item-reservation(아이템예약)]
-[#Gureumi#1234,Gureumi#5678]
+[#GameGureumi#1234,GameGureumi#5678]
 * 아이템 예약시 간헐적으로 발생하는 예약 오류 수정
 * 아이템 예약시 예약자 정보가 로그에 남도록 변경
 ```
