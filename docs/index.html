@@ -1,14 +1,64 @@
-<!DOCTYPE html5>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameGureumi</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+        #repo-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: inline-block;
+            margin-top: 20px;
+        }
+        #repo-info h2 {
+            margin-bottom: 10px;
+        }
+        #repo-info p {
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to GameGureumi!</h1>
-    <p>This project was initiated to develop a scalable and reliable game server infrastructure for seamless online gaming experiences.</p>
+<h1>Welcome to GameGureumi!</h1>
+<p>This project was initiated to develop a scalable and reliable game server infrastructure for seamless online gaming experiences.</p>
+
+<div id="repo-info">
+    <h2>Loading Repository Info...</h2>
+</div>
+
+<script>
+    // JSON 파일 경로
+    const dataUrl = './repo-data.json';
+
+    // JSON 파일을 읽어와서 표시
+    fetch(dataUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch repository data of GameGureumi.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const repoInfoDiv = document.getElementById('repo-info');
+            repoInfoDiv.innerHTML = `
+                    <h2><a href="${data.url}" target="_blank">${data.name}</a></h2>
+                `;
+        })
+        .catch(error => {
+            console.error('Error fetching repo data:', error);
+            const repoInfoDiv = document.getElementById('repo-info');
+            repoInfoDiv.innerHTML = '<h2>Failed to load repository data of GameGureumi</h2>';
+        });
+</script>
 </body>
 </html>
