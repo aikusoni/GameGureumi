@@ -55,7 +55,7 @@
                 `;
         })
         .catch(error => {
-            console.error('Error fetching repo data:', error);
+            console.error('Error fetching repo data:' + error);
             const repoInfoDiv = document.getElementById('repo-info');
             repoInfoDiv.innerHTML = '<h2>Failed to load repository data of GameGureumi</h2>';
         });
