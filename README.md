@@ -1,6 +1,30 @@
 # GameGureumi
 
-## This project is started to create a general game server infrastructure.
+This project is started to create a general game server infrastructure.
 
-### documents
-- [Convention](./documents/conventions/convention.md)
+### Contents
+- [Overview](#overview)
+- [Directory Structure](#directory-structure)
+
+### Overview
+- This project is started to create a general game server infrastructure.
+
+### Directory Structure
+```
+.
+|-- docs
+|-- documents
+|   `-- conventions
+|	   |-- api
+|	   |-- common
+|	   |-- git
+|	   |-- java
+|	   |-- javascript
+|	   `-- vault
+|-- launchers
+|-- sources
+|   |-- applications
+|   |-- libraries
+|   `-- utilities
+`-- tools
+```

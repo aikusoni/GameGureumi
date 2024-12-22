@@ -1,0 +1,53 @@
+allprojects {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+
+    group = 'io.github.aikusoni.gamegureumi'
+    version = System.getenv("GITHUB_TAG") ?: "0.0.1-SNAPSHOT"
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    // GitHub에서 Publish시 GitHubAction으로 자동 수행됨
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+
+                versionMapping {
+                    usage('java-api') {
+                        fromResolutionOf('runtimeClasspath')
+                    }
+                    usage('java-runtime') {
+                        fromResolutionResult()
+                    }
+                }
+            }
+        }
+        repositories {
+            maven {
+                // packages 레포에 배포
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/aikusoni/GameGureumi")
+                credentials {
+                    // gpr.user: github 사용자명
+                    // gpr.token: github Personal access token
+                    username = rootProject.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                    password = rootProject.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
+                }
+            }
+        }
+    }
+}
