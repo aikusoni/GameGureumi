@@ -51,7 +51,7 @@
         .then(data => {
             const repoInfoDiv = document.getElementById('repo-info');
             repoInfoDiv.innerHTML = `
-                    <h2><a href="${data.url}" target="_blank">${data.name}</a></h2>
+                    <h2>repository : <a href="${data.url}" target="_blank">${data.name}</a></h2>
                 `;
         })
         .catch(error => {
