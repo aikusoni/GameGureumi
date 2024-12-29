@@ -1,7 +1,5 @@
 package io.github.aikusoni.gamegureumi.spring.mvcstandard.advice;
 
-import io.github.aikusoni.gamegureumi.spring.mvcstandard.constants.WebMvcMessageCode;
-import io.github.aikusoni.gamegureumi.spring.mvcstandard.constants.WebMvcTestMessageCode;
 import io.github.aikusoni.gamegureumi.spring.mvcstandard.model.view.GureumiResponseBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +11,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("/check-role")
-public class CheckRoleTestController {
+public class CheckRoleTestsController {
     @CheckRole("ADMIN")
     @RequestMapping(method = {POST, GET}, path = "/admin", produces = "application/json")
     public ResponseEntity<GureumiResponseBody<String>> admin() {

@@ -21,10 +21,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Slf4j
-@WebMvcTest(controllers = GureumiResponseBodyTestController.class)
+@WebMvcTest(controllers = GureumiResponseBodyTestsController.class)
 @Import({MessageConfig.class, LocaleConfig.class})
-@ContextConfiguration(classes = {GureumiResponseBodyTestController.class})
-public class GureumiResponseBodyTest {
+@ContextConfiguration(classes = {GureumiResponseBodyTestsController.class})
+public class GureumiResponseBodyTests {
     @Autowired
     private MockMvc mockMvc;
 

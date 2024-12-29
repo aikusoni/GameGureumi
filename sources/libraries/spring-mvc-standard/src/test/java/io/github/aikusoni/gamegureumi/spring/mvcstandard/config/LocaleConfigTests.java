@@ -19,10 +19,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Slf4j
-@WebMvcTest(controllers = LocaleConfigTestController.class)
+@WebMvcTest(controllers = LocaleConfigTestsController.class)
 @Import({MessageConfig.class, LocaleConfig.class})
-@ContextConfiguration(classes = {LocaleConfigTestController.class})
-public class LocaleConfigTest {
+@ContextConfiguration(classes = {LocaleConfigTestsController.class})
+public class LocaleConfigTests {
     @Autowired
     private MockMvc mockMvc;
 

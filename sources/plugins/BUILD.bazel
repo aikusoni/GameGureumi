@@ -1,0 +1,21 @@
+load("@rules_java//java:defs.bzl", "java_plugin")
+load("@rules_jvm_external//:defs.bzl", "artifact")
+
+java_plugin(
+    name = "lombok_plugin",
+    visibility = ["//visibility:public"],
+    generates_api = True,
+    processor_class = "lombok.launch.AnnotationProcessorHider$AnnotationProcessor",
+    deps = [
+        artifact("org.projectlombok:lombok"),
+    ],
+)
+
+java_plugin(
+    name = "spring_boot_config_processor_plugin",
+    visibility = ["//visibility:public"],
+    processor_class = "org.springframework.boot.configurationprocessor.ConfigurationMetadataAnnotationProcessor",
+    deps = [
+        artifact("org.springframework.boot:spring-boot-configuration-processor"),
+    ],
+)

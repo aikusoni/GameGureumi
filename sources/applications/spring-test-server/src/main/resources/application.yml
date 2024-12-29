@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: test-server-spring
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /api/test-server-spring
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+  forward-headers-strategy: framework
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    csrf:
+      enabled: true

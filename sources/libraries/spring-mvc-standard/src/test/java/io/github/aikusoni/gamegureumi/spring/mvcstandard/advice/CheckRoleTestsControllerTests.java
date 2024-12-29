@@ -22,10 +22,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Slf4j
-@WebMvcTest(controllers = CheckRoleTestController.class)
+@WebMvcTest(controllers = CheckRoleTestsController.class)
 @Import({AopAutoConfiguration.class, CheckRoleAdvice.class, RestExceptionHandler.class, MessageConfig.class, LocaleConfig.class})
-@ContextConfiguration(classes = {CheckRoleTestController.class})
-public class CheckRoleTestControllerTest {
+@ContextConfiguration(classes = {CheckRoleTestsController.class})
+public class CheckRoleTestsControllerTests {
     @Autowired
     private MockMvc mockMvc;
 

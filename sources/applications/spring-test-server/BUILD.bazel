@@ -1,0 +1,33 @@
+load("@rules_java//java:defs.bzl", "java_binary", "java_library", "java_test")
+load("@rules_jvm_external//:defs.bzl", "artifact")
+
+java_binary(
+    name = "gg-spring-test-server",
+    srcs = glob(["src/main/java/**/*.java"]),
+    resources = glob(["src/main/resources/**/*"]),
+    main_class = "io.github.aikusoni.gamegureumi.spring.testserver.SpringTestServerApplication",
+    javacopts = [
+    ],
+    plugins = [
+        "//sources/plugins:lombok_plugin",
+        "//sources/plugins:spring_boot_config_processor_plugin",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//sources/libraries/spring-core:gg-spring-core",
+        "//sources/libraries/spring-mvc-standard:gg-spring-mvc-standard",
+        artifact("org.projectlombok:lombok"),
+        artifact("org.aspectj:aspectjweaver"),
+        artifact("org.slf4j:slf4j-api"),
+        artifact("org.mapstruct:mapstruct"),
+        artifact("org.springframework.boot:spring-boot"),
+        artifact("org.springframework.boot:spring-boot-starter-web"),
+        artifact("org.springframework.boot:spring-boot-autoconfigure"),
+        artifact("org.springframework:spring-context"),
+        artifact("org.springframework:spring-web"),
+        #         artifact("org.springframework.boot:spring-boot-starter-validation"),
+        artifact("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0"),
+        artifact("org.springframework.boot:spring-boot-configuration-processor"),
+        artifact("io.swagger.core.v3:swagger-annotations-jakarta"),
+    ],
+)

@@ -1,12 +1,5 @@
-load("@rules_java//java:defs.bzl", "java_library", "java_plugin")
+load("@rules_java//java:defs.bzl", "java_library")
 load("@rules_jvm_external//:defs.bzl", "artifact")
-
-java_plugin(
-    name = "lombok_plugin",
-    generates_api = True,
-    processor_class = "lombok.launch.AnnotationProcessorHider$AnnotationProcessor",
-    deps = ["@maven//:org_projectlombok_lombok"],
-)
 
 java_library(
     name = "gg-spring-mvc-standard",
@@ -14,7 +7,7 @@ java_library(
     javacopts = [
     ],
     plugins = [
-        ":lombok_plugin",
+        "//sources/plugins:lombok_plugin",
     ],
     resources = glob(["src/main/resources/**/*"]),
     visibility = ["//visibility:public"],
@@ -45,7 +38,7 @@ java_test(
     ],
     main_class = "org.junit.platform.console.ConsoleLauncher",
     plugins = [
-        ":lombok_plugin",
+        "//sources/plugins:lombok_plugin",
     ],
     resources = glob(["src/test/resources/**/*"]),
     use_testrunner = False,

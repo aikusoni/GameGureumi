@@ -10,8 +10,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
-@RequestMapping("/ats-response-body")
-public class GureumiResponseBodyTestController {
+@RequestMapping("/gg-response-body")
+public class GureumiResponseBodyTestsController {
     @RequestMapping(method = {POST, GET}, path = "/only-ok", produces = "application/json")
     public ResponseEntity<GureumiResponseBody<String>> onlyOk() {
         return GureumiResponseBody.ok("OK")

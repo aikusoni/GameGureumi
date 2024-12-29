@@ -1,6 +1,5 @@
 package io.github.aikusoni.gamegureumi.spring.mvcstandard.config;
 
-import io.github.aikusoni.gamegureumi.spring.mvcstandard.constants.WebMvcTestMessageCode;
 import io.github.aikusoni.gamegureumi.spring.mvcstandard.model.view.GureumiResponseBody;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +11,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("/locale-config")
-public class LocaleConfigTestController {
+public class LocaleConfigTestsController {
     @RequestMapping(method = {POST, GET}, path = "/test", produces = "application/json")
     public ResponseEntity<GureumiResponseBody<String>> test() {
         return GureumiResponseBody.ok("OK", LOCALE_CONFIG_TEST)
