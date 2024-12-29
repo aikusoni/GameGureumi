@@ -1,6 +1,5 @@
-load("@rules_java//java:defs.bzl", "java_library", "java_plugin")
+load("@rules_java//java:defs.bzl", "java_library", "java_plugin", "java_test")
 load("@rules_jvm_external//:defs.bzl", "artifact")
-load("@contrib_rules_jvm//java:defs.bzl", "JUNIT5_DEPS", "java_test_suite")
 
 java_plugin(
     name = "lombok_plugin",
@@ -27,28 +26,6 @@ java_library(
         artifact("org.springframework:spring-core"),
     ],
 )
-#
-# java_test_suite(
-#     name = "gg-spring-core-test",
-#     size = "small",
-#     srcs = glob(["src/test/java/**/*.java"]),
-#     runner = "junit5",
-#     test_suffixes = ["Tests.java"],
-#     runtime_deps = JUNIT5_DEPS,
-#     deps = [
-#         ":gg-spring-core",
-#         artifact("org.junit.jupiter:junit-jupiter-api"),
-#         artifact("org.junit.jupiter:junit-jupiter-params"),
-#         artifact("org.projectlombok:lombok"),
-#         artifact("org.springframework.boot:spring-boot"),
-#         artifact("org.springframework.boot:spring-boot-starter"),
-#         artifact("org.springframework.boot:spring-boot-starter-test"),
-#         artifact("org.springframework.boot:spring-boot-test"),
-#         artifact("org.springframework:spring-beans"),
-#         artifact("org.springframework:spring-context"),
-#         artifact("org.springframework:spring-core"),
-#     ],
-# )
 
 java_test(
     name = "gg-spring-core-test",

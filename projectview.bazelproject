@@ -2,6 +2,7 @@ derive_targets_from_directories: true
 
 directories:
     .
+    sources/libraries
     sources/libraries/spring-core
     sources/libraries/spring-mvc-standard
 
