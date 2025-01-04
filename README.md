@@ -1,5 +1,7 @@
 # GameGureumi
 
+:construction: **This project is currently under development.** :construction:
+
 This project was initiated as a personal study project and is currently underway to explore and develop a general game server infrastructure.
 
 ### List of Contents
